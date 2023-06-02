@@ -49,11 +49,14 @@ $(function () {
     })
 
 
-
+    // section2 슬라이드 돌리기
     $('.product_slide').slick({
         slidesToShow: 3,
         asNavFor: ".pic_slide",
         focusOnSelect: true,
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
         responsive: [
             {
                 breakpoint: 768,
@@ -63,6 +66,33 @@ $(function () {
             }
         ]
     });
+
+
+    // .main_big_product에 화살표 버튼 눌러서 슬라이드 돌아가게 하기
+    $('.main_big_product .arrows .left').on('click', function () {
+        $('.product_slide2').slick('slickPrev');
+    });
+    $('.main_big_product .arrows .right').on('click', function () {
+        $('.product_slide2').slick('slickNext');
+    });
+
+
+    $('.product_slide2').slick({
+        slidesToShow: 3,
+        arrows: false,
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+
+
+
 
     $('.pic_slide').slick({
         vertical: true,
@@ -82,6 +112,14 @@ $(function () {
         const st = $(this.hash).offset().top;
         console.log(st);
         $('html, body').animate({ scrollTop: st }, 600)
+    });
+
+    // history tab 메뉴
+    $('.history_menu li').on('click', function (e) {
+        e.preventDefault();
+        let idx = $(this).index();
+        $('.history_content li').eq(idx).addClass('on').siblings().removeClass('on');
+
     })
 
 })

@@ -91,6 +91,8 @@
 
 .header .gnb>ul>li {
     position: relative;
+    white-space: nowrap;
+    word-break: keep-all;
 }
 
 .header .gnb>ul>li~li::before {
@@ -471,6 +473,49 @@
     transform: translate(-50%, 0);
 }
 
+
+
+
+
+
+
+
+
+/*----------백그라운드 ----------*/
+.main_banner {
+    /* margin: 0 50px;
+    border-radius: 50px 0; */
+    background: url(../images/mainvisual01.jpg) no-repeat fixed center center/cover;
+    filter: grayscale(1);
+    color: #fff;
+    text-align: center;
+}
+
+.main_banner .title p {
+    margin: 0 0 60px 0;
+}
+
+.main_banner .title span {
+    text-transform: uppercase;
+    margin: 0 10px 0 0;
+    font-size: 12px;
+    vertical-align: 2px;
+    user-select: none;
+}
+
+.main_banner .title i {
+    padding: 10px;
+    gap: 30px;
+    background: tomato;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
 /*제품 슬라이드 section 2*/
 .main_product {
     background: #f9f9f9;
@@ -487,6 +532,155 @@
     /*overflow: hidden;은 박스 안에 가둔다는 의미.*/
     overflow: hidden;
 }
+
+.main_product .product_slide figure {
+    padding: 0 5px;
+}
+
+.main_product .product_slide figure img {
+    height: 230px;
+    object-fit: cover;
+    margin: 0 0 10px 0;
+}
+
+.main_product .product_slide figure strong {
+    font-size: 12px;
+}
+
+
+.main_big_product {
+    position: relative;
+    background: #f9f9f9;
+}
+
+.main_big_product .case {
+    overflow: hidden;
+}
+
+.main_big_product .product_slide2 {
+    margin: 0 -15px
+}
+
+.main_big_product .product_slide2 figure {
+    padding: 0 15px;
+}
+
+
+.main_big_product .arrows {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+
+    transform: translate(-50%, -50%);
+    max-width: 1400px;
+    width: 100%;
+
+    padding: 0 15px;
+}
+
+.main_big_product .arrows i {
+    padding: 20px 5px;
+    background: #fff;
+
+}
+
+
+
+
+
+
+
+/* 슬라이드 버튼 만들어주기 */
+.main_big_product .slick-dots {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.main_big_product .slick-dots li {
+    display: inline-block;
+}
+
+.main_big_product .slick-dots button {
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+/* li에 slick-active가 적용되면 바뀌는 색깔 */
+.main_big_product .slick-dots li.slick-active button {
+    background: #333;
+}
+
+
+/* section - main_history */
+.main_history {}
+
+css/main.css.main_history .history {
+    display: flex;
+    gap: 30px;
+    min-height: 400px;
+}
+
+.main_history .history>* {
+    flex: 1;
+}
+
+.main_history .history .history_menu li {
+    position: relative;
+    margin: 0 0 30px 0;
+    padding: 0 0 0 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.main_history .history .history_menu li strong {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.main_history .history .history_menu li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border: 2px solid tomato;
+    border-radius: 50%;
+}
+
+.main_history .history .history_menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 15px;
+    bottom: -25px;
+    width: 2px;
+    background: tomato;
+}
+
+.main_history .history .history_content li {
+    height: 0;
+    overflow: hidden;
+}
+
+.main_history .history .history_content li.on {
+    height: auto;
+}
+
+.main_history .history .history_content figure {
+    margin: 0 0 10px 0;
+}
+
 
 @media (max-width:768px) {
     .main_product .content {
