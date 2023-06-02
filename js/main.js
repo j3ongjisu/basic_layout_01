@@ -1,5 +1,15 @@
 $(function () {
 
+    // 메뉴 크기 조정
+    $(window).on('scroll', function () {
+        let sct = $(window).scrollTop();
+        sct > 0 ? $('.header').addClass('on') : $('.header').removeClass('on');
+    })
+
+
+
+
+
     $('.main_slide').on('init afterChange', function (e, s, c) {
         const current = $('.main_slide .slick-current');
         current.addClass('on').siblings().removeClass('on');
@@ -21,6 +31,7 @@ $(function () {
         speed: 1000,
         pauseOnHover: false,
         fade: true,
+        arrows: false,
     });
 
 
