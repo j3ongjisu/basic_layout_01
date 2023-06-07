@@ -100,10 +100,26 @@ $(function () {
 
     });
 
+
+
+    //to_top
     //to_top 스크롤 위로 올리기
     $('.to_top').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 600)
     });
+
+    // to_top 스크롤 숨겼다가 나타내기
+    $(window).on('scroll', function () {
+        let sct = $(window).scrollTop();
+        // sct > 1000 ? $('.to_top').fadeIn(1000) : $('.to_top').fadeOut();
+        sct > 1000 ? $('.to_top').addClass('on') : $('.to_top').removeClass('on');
+    });
+
+
+
+
+
+
 
 
     //스크롤 아래로 한 칸 내리기
@@ -114,12 +130,71 @@ $(function () {
         $('html, body').animate({ scrollTop: st }, 600)
     });
 
+
+
+
+
+
+
     // history tab 메뉴
     $('.history_menu li').on('click', function (e) {
         e.preventDefault();
         let idx = $(this).index();
         $('.history_content li').eq(idx).addClass('on').siblings().removeClass('on');
 
-    })
+    });
 
+
+
+
+
+
+
+
+    // footer
+    $('#fl').on('change', function () {
+        const lnk = $(this).val();
+        console.log(lnk, '바뀜');
+        //val()이 있을 때만
+        // window.open(lnk);
+        // if (lnk) {
+        //     window.open(lnk);
+        // }
+        lnk && window.open(lnk);
+    });
+
+
+    $('.family_link2 span').on('click', function () {
+        $(this).toggleClass('on');
+        $(this).next().toggleClass('on');
+    });
+
+
+
+
+
+
+    $('.portfolio_slide').on('init afterChange', function (e, s, c) {
+        console.log(c);
+        $('.main_portfolio .itm').eq(c).addClass('on')
+            .siblings().removeClass('on')
+
+    })
+    $('.portfolio_slide').slick({
+        centerMode: true,
+        variableWidth: true,
+        arrows: false,
+        dots: true,
+    });
+
+
+
+
+
+    $('.main_portfolio .tab_arrows .left').on('click', function () {
+        $('.portfolio_slide').slick('slickPrev')
+    });
+    $('.main_portfolio .tab_arrows .right').on('click', function () {
+        $('.portfolio_slide').slick('slickNext')
+    });
 })
